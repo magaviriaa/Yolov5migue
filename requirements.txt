@@ -1,20 +1,15 @@
+# Streamlit compatible con numpy<2
 streamlit==1.28.0
-
-# Mantén numpy < 2 porque Streamlit 1.28 lo exige
 numpy==1.26.4
 pandas==2.2.3
 Pillow==10.4.0
 
-# OpenCV "headless" (evita libs de GUI en servidores)
+# OpenCV sin GUI (evita errores de libGL)
 opencv-python-headless==4.10.0.84
 
-# PyTorch / torchvision con wheels para Python 3.13
+# PyTorch CPU + Vision con wheels para Python 3.13
 torch==2.9.0
 torchvision==0.24.0
 
-# Utilidades livianas (opcionales, pero seguras)
-requests==2.32.3
-gitpython==3.1.43
-tqdm==4.66.5
-PyYAML==6.0.2
-psutil==5.9.8
+# Nada de ultralytics / yolov5 de PyPI: el código usa torch.hub
+# (si insistes en instalar el paquete yolov5, añade 'yolov5==7.0.9', pero NO ambos: ultralytics y yolov5 chocan)
