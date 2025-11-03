@@ -1,17 +1,27 @@
+# Streamlit compatible con numpy<2
 streamlit==1.28.0
 
-# PyTorch CPU con wheels para Python 3.13
-torch==2.5.1
-torchvision==0.20.1
+# Evita conflictos con numpy 2.x en Py3.13
+numpy==1.26.4
+pandas>=2.2.3
 
-# Imagen / arrays / tablas (todas con wheels 3.13)
-opencv-python-headless==4.10.0.84
-numpy==2.1.3
-pandas==2.2.3
-Pillow==10.4.0
+# PyTorch + torchvision que SÍ tienen wheels para Python 3.13
+torch==2.9.0
+torchvision==0.24.0
 
-# Utilidades livianas (seguras en 3.13)
-gitpython==3.1.43
-tqdm==4.66.5
-PyYAML==6.0.2
-requests==2.32.3
+# YOLOv5 (usa este paquete o "ultralytics", pero no ambos)
+yolov5==7.0.9
+
+# OpenCV sin GUI (reduce dependencias de sistema)
+opencv-python-headless==4.8.1.78
+
+Pillow>=10.0.0
+gitpython>=3.1.30
+matplotlib>=3.3
+psutil
+PyYAML>=5.3.1
+requests>=2.23.0
+scipy>=1.10.0
+thop>=0.1.1
+tqdm>=4.64.0
+huggingface-hub==0.24.7
