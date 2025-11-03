@@ -1,9 +1,6 @@
 streamlit==1.28.0
-
-# PyTorch CPU para Py 3.10 (wheels disponibles)
-torch==1.12.0
-torchvision==0.13.0
-
+torch==2.4.1
+torchvision==0.19.1
 opencv-python-headless==4.10.0.84
-numpy==1.24.3
+numpy==2.0.2
 pandas==2.2.3
