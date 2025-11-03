@@ -153,6 +153,33 @@ else:
     st.error("No se pudo cargar el modelo. Verifica dependencias e inténtalo nuevamente.")
     st.stop()
 
+@st.cache_resource
+def load_yolov5_model(model_path='yolov5s.pt'):
+    try:
+        import yolov5
+        try:
+            model = yolov5.load(model_path, weights_only=False)
+            return model
+        except TypeError:
+            try:
+                model = yolov5.load(model_path)
+                return model
+            except Exception:
+                st.warning("Intentando método alternativo de carga (torch.hub)…")
+                # Fallback: NO requiere tener instalado 'yolov5' o 'ultralytics'
+                model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True, trust_repo=True)
+                return model
+    except Exception:
+        # Si el import yolov5 falla, haz fallback directo
+        st.warning("No se encontró el paquete 'yolov5'. Usando torch.hub como respaldo…")
+        try:
+            model = torch.hub.load('ultralytics/yolov5', 'yolov5s', pretrained=True, trust_repo=True)
+            return model
+        except Exception as e2:
+            st.error(f"❌ Error al cargar el modelo vía torch.hub: {e2}")
+            return None
+
+
 # Pie
 st.markdown("---")
 st.caption("App con Streamlit + YOLOv5. Narrativa: Taylor’s Version 💫")
