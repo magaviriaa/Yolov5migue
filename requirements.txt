@@ -1,6 +1,6 @@
 streamlit==1.28.0
 
-# CPU build estable para Py 3.11
+# PyTorch CPU para Py 3.10 (wheels disponibles)
 torch==1.12.0
 torchvision==0.13.0
 
